@@ -10,17 +10,25 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  fs.readFile("./database.json", "utf8")
-    .then((content) => JSON.parse(content))
-    .then((obj) => console.log(obj.users))
-    .catch((err) => console.log(err));
+  
   res.render("createcard");
+
 });
 app.get("/people/:id", (req, res) => {
   res.render("people");
 });
 app.get("/homepage", (req, res) => {
   res.render("homepage");
+});
+
+app.post("/create", (req, res) => {
+  fs.readFile("./database.json", "utf8")
+    .then((content) => JSON.parse(content))
+    .then((obj) => console.log(obj.users))
+    .catch((err) => console.log(err));
+  res.render("homepage");
+  fs.writeFile("./database.json", "utf8")
+    
 });
 app.get("/:id/photos", (req, res) => {
   const id = req.params.id;
