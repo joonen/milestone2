@@ -9,13 +9,13 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("homepage");
+  res.render("createpage");
 });
 app.get("/people/:id", (req, res) => {
   res.render("people");
 });
-app.get("/create", (req, res) => {
-  res.render("createcard");
+app.get("/homepage", (req, res) => {
+  res.render("homepage");
 });
 app.get("/:id/photos", (req, res) => {
   const id = req.params.id;
