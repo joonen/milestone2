@@ -3,6 +3,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em
+}
+
 body {
   color: white;
   background-color: #22212c;

@@ -1,6 +1,7 @@
 const express = require("express");
 const PORT = process.env.PORT || 8007;
 const app = express();
+const fs = require('fs').promises
 
 // Don't worry about these 4 lines below
 app.set("view engine", "ejs");
@@ -9,7 +10,11 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("createpage");
+  fs.readFile("./database.json", "utf8")
+    .then((content) => JSON.parse(content))
+    .then((obj) => console.log(obj.users))
+    .catch((err) => console.log(err));
+  res.render("createcard");
 });
 app.get("/people/:id", (req, res) => {
   res.render("people");
